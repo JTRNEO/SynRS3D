@@ -154,12 +154,13 @@ The redistributable datasets can be downloaded from the links provided below:
 
 ### Data Structure:
 
-For SynRS3D and real-world datasets, the data is expected in the following structure:
+For real-world datasets, the data is expected in the following structure:
 
 ```
-${DATASET_ROOT} # Dataset root directory, e.g., /home/username/project/SynRS3D/data/DFC18
+${DATASET_ROOT} # Dataset root directory, e.g., /home/username/project/SynRS3D/data/DFC19_JAX
 ├── opt              # RGB images saved as .tif
 ├── gt_nDSM          # Normalized Digital Surface Model images saved as .tif
+├── gt_ss_mask       # Land cover mapping labels saved as .tif (some datasets like DFC18 do not include land cover mapping labels)
 ├── train.txt        # List of training data names without suffix
 └── test.txt         # List of testing data names without suffix
 ```
