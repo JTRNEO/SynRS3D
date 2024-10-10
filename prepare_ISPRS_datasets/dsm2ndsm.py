@@ -1,5 +1,6 @@
 """
-dsm2dtm - Generate DTM (Digital Terrain Model) from DSM (Digital Surface Model)
+dsm2dtm - Generate nDSM (normalized Digital Surface Model) from DSM (Digital Surface Model)
+Codes are borrowed from https://github.com/seedlit/dsm2dtm/blob/main/dsm2dtm.py
 
 """
 
@@ -409,7 +410,7 @@ def main(dsm_path, out_dir, search_radius=40, smoothen_radius=45, dsm_replace_th
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(description="Generate DTM from DSM")
+    parser = argparse.ArgumentParser(description="Generate nDSM from DSM")
     parser.add_argument("--start", type=int, required=True, help="Start point (line number in the image list file)")
     parser.add_argument("--total", type=int, required=True, help="Number of images to process")
     parser.add_argument("--image_list_file", type=str, default='./files_list_v.txt',help="Path to the text file containing image names")

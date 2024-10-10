@@ -40,13 +40,13 @@ def get_arguments():
     Returns:
       A list of parsed arguments.
     """
-    parser = argparse.ArgumentParser(description="DeepLab-ResNet Network")
+    parser = argparse.ArgumentParser(description="Evaluation Script")
     parser.add_argument("--restore_path", type=str, default='', help="trained model path")
     parser.add_argument("--num_classes", type=int, default=8, help="#classes of land cover branch")
     parser.add_argument("--eval_oem", action="store_true", help="eval oem or not")
     parser.add_argument("--test_datasets",  nargs='*', type=str, default=['DFC18'], help="data name list")
     parser.add_argument("--ood_datasets",  nargs='*', type=str, default=['DFC18'], help="data name list")
-    parser.add_argument("--images_file", nargs='*', type=str, default=['train.txt', 'test_syn.txt', 'test.txt'], help="images txt file")
+    parser.add_argument("--images_file", nargs='*', type=str, default=['train.txt', 'test_syn.txt', 'test.txt'], help="images txt file for [training, evaluation, style transfer]")
 
     parser.add_argument("--save_num_images", type=int, default=5, help="How many images to save.")
     parser.add_argument("--snapshot_dir", type=str, default='snapshot', help="Where to save snapshots of the model.")
@@ -72,14 +72,14 @@ def main():
     regression_config = [
         {
             'name': 'regression',
-            'nclass': 1,  # Number of classes for the segmentation mask of the first task
+            'nclass': 1,  # Number of classes for the regression branch
         }]
 
 
     segmentation_config = [
         {
             'name': 'segmentation',
-            'nclass': args.num_classes  # Number of classes for the segmentation mask of the first task
+            'nclass': args.num_classes  # Number of classes for the segmentation branch
         }]
     
     cudnn.enabled = True

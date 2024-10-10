@@ -1,11 +1,11 @@
 #!/bin/bash
-train_set=('sr_05_cd_aux' 'sr_005_cd_aux' 'sp_05_cd_lower' 'sp_005_cd_lower' 'sr_05_cd' 'sr_005_cd' 'sp_05_cd' 'sp_005_cd' 'sr_05_cd_lower' 'sr_005_cd_lower' 'sr_05_cd_higher' 'sr_005_cd_higher' 'sp_05_cd_higher' 'sp_005_cd_higher' 'sp_1_cd_lower' 'sp_1_cd' 'sp_1_cd_higher')
-test_set=('DFC19_JAX' 'DFC19_OMA' 'geonrw_rural' 'geonrw_urban' 'OGC_ARG' 'OGC_ATL')
+train_set=('grid_g05_mid_v2' 'grid_g005_mid_v2' 'terrain_g05_low_v1' 'terrain_g005_low_v1' 'grid_g05_mid_v1' 'grid_g005_mid_v1' 'terrain_g05_mid_v1' 'terrain_g005_mid_v1' 'grid_g05_low_v1' 'grid_g005_low_v1' 'grid_g05_high_v1' 'grid_g005_high_v1' 'terrain_g05_high_v1' 'terrain_g005_high_v1' 'terrain_g1_low_v1' 'terrain_g1_mid_v1' 'terrain_g1_high_v1')
+test_set=('DFC18' 'DFC19_JAX' 'DFC19_OMA' 'geonrw_rural' 'geonrw_urban' 'OGC_ARG' 'OGC_ATL')
 
-images_file=('selected_train.txt' 'test_syn.txt' 'train.txt')
-da=('HM' 'PDA')
+images_file=('train.txt' 'test_syn.txt' 'train.txt')
+da=('FDA' 'HM' 'PDA')
 
-python train_dpt_RS3DAda.py \
+/home/songjian/anaconda3/envs/mmseg/bin/python train_dpt_RS3DAda.py \
 --datasets ${train_set[*]} \
 --test_datasets ${test_set[*]} \
 --ood_datasets ${test_set[*]} \
@@ -19,7 +19,7 @@ python train_dpt_RS3DAda.py \
 --PDA_blend_ratio 0.8 1.0 \
 --PDA_type standard \
 --tgt_datasets ${test_set[*]} \
---snapshot_dir /home/songjian/project/SynRS3D/snapshot_rs3dada_test \
+--snapshot_dir /path/to/your/project/SynRS3D/snapshot_rs3dada \
 --images_file ${images_file[*]} \
 --batch_size 1 \
 --learning_rate 1e-6 \
@@ -47,6 +47,7 @@ python train_dpt_RS3DAda.py \
 --pesudo_file 'train.txt' \
 --use_ground_mask \
 --decoder_lr_weight 10 \
---max_da_images 300 \
---lambda_dsms 0.8 \
---eval_oem
+--max_da_images 200 \
+--lambda_dsms 0.8
+#optional
+#--eval_oem

@@ -1,25 +1,23 @@
 import numpy as np
 
-synrs3d_datasetname = set(['sp_1_cd', 'sp_05_cd', 'sp_005_cd', 'sr_05_cd', 'sr_005_cd',
-                               'sp_1_cd_lower', 'sp_05_cd_lower', 'sp_005_cd_lower', 'sr_05_cd_lower', 'sr_005_cd_lower',
-                               'sp_1_cd_higher', 'sp_05_cd_higher', 'sp_005_cd_higher', 'sr_05_cd_higher', 'sr_005_cd_higher', 
-                               'sr_05_cd_aux', 'sr_005_cd_aux',
-                               'sp_1', 'sp_05', 'sp_005', 'sr_05', 'sr_005'])
+synrs3d_datasetname = set(['terrain_g05_mid_v1', 'grid_g05_mid_v2', 'terrain_g05_low_v1', 'terrain_g05_high_v1', 'terrain_g005_mid_v1',
+                           'terrain_g005_low_v1', 'grid_g005_mid_v2', 'terrain_g005_high_v1', 'terrain_g1_mid_v1', 'terrain_g1_low_v1',
+                           'terrain_g1_high_v1', 'grid_g005_mid_v1', 'grid_g005_low_v1', 'grid_g005_high_v1', 'grid_g05_mid_v1', 
+                           'grid_g05_low_v1', 'grid_g05_high_v1'])
 ISPRS_datasetname = set(['vaihingen', 'potsdam'])
 
 real_datasetname = set(['DFC18', 'DFC19_JAX', 'DFC19_OMA', 'DFC23', 'geonrw_urban', 'geonrw_rural', 'vaihingen', 'potsdam', 'nagoya', 'tokyo', 'OGC_JAX', 'OGC_ARG', 'OGC_ATL', 'OGC_OMA'])
 
 ss_datasetname = set(['SParis_03', 'SParis_05', 'SVenice_03', 'SVenice_05', 
-                      'sp_1_cd', 'sp_05_cd', 'sp_005_cd', 'sr_05_cd', 'sr_005_cd',
-                      'sp_1_cd_lower', 'sp_05_cd_lower', 'sp_005_cd_lower', 'sr_05_cd_lower', 'sr_005_cd_lower',
-                      'sp_1_cd_higher', 'sp_05_cd_higher', 'sp_005_cd_higher', 'sr_05_cd_higher', 'sr_005_cd_higher',
-                      'sr_05_cd_aux', 'sr_005_cd_aux',
+                      'terrain_g05_mid_v1', 'grid_g05_mid_v2', 'terrain_g05_low_v1', 'terrain_g05_high_v1', 'terrain_g005_mid_v1',
+                      'terrain_g005_low_v1', 'grid_g005_mid_v2', 'terrain_g005_high_v1', 'terrain_g1_mid_v1', 'terrain_g1_low_v1',
+                      'terrain_g1_high_v1', 'grid_g005_mid_v1', 'grid_g005_low_v1', 'grid_g005_high_v1', 'grid_g05_mid_v1', 
+                      'grid_g05_low_v1', 'grid_g05_high_v1',
                       'DFC19_JAX', 'DFC19_OMA', 'vaihingen', 'potsdam', 'OEM'])
-syn_ss_datasetname = set(['sp_1_cd', 'sp_05_cd', 'sp_005_cd', 'sr_05_cd', 'sr_005_cd',
-                          'sr_05_cd_aux', 'sr_005_cd_aux',
-                          'sp_1_cd_lower', 'sp_05_cd_lower', 'sp_005_cd_lower', 'sr_05_cd_lower', 'sr_005_cd_lower',
-                          'sp_1_cd_higher', 'sp_05_cd_higher', 'sp_005_cd_higher', 'sr_05_cd_higher', 'sr_005_cd_higher'
-                          ])
+syn_ss_datasetname = set(['terrain_g05_mid_v1', 'grid_g05_mid_v2', 'terrain_g05_low_v1', 'terrain_g05_high_v1', 'terrain_g005_mid_v1',
+                          'terrain_g005_low_v1', 'grid_g005_mid_v2', 'terrain_g005_high_v1', 'terrain_g1_mid_v1', 'terrain_g1_low_v1',
+                          'terrain_g1_high_v1', 'grid_g005_mid_v1', 'grid_g005_low_v1', 'grid_g005_high_v1', 'grid_g05_mid_v1', 
+                          'grid_g05_low_v1', 'grid_g05_high_v1'])
 real_ss_datasetname = set(['DFC19_JAX', 'DFC19_OMA', 'vaihingen', 'potsdam'])
 
 OEM_datasetname = set(['OEM'])

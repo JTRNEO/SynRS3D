@@ -38,32 +38,34 @@ def get_arguments():
     parser = argparse.ArgumentParser(description="RS3DAda")
 
     parser.add_argument("--root_dir", type=str, default='/home/songjian/project/SynRS3D/data/', help="Path to the directory containing the datasets.")
-    parser.add_argument("--datasets",  nargs='*', type=str, default=['sr_05_cd_aux'], help="traning dataset name list")
+    parser.add_argument("--datasets",  nargs='*', type=str, default=['grid_g05_mid_v1'], help="traning datasets name list")
     parser.add_argument("--test_datasets",  nargs='*', type=str, default=['DFC18'], help="target domain 1 datasets list and target domain 2 datasets list")
     parser.add_argument("--ood_datasets",  nargs='*', type=str, default=['DFC18'], help="target domain 2 datasets list")
-    parser.add_argument("--images_file", nargs='*', type=str, default=['selected_train.txt', 'test.txt', 'train.txt'], 
+    parser.add_argument("--images_file", nargs='*', type=str, default=['train.txt', 'test.txt', 'train.txt'], 
                         help="images txt file, first one is the training txt, second is the test txt, third is the style transfer txt")
     parser.add_argument("--crop_size", type=int, default=392, help="height and width of images.")
     parser.add_argument('--decoder', type=str, default='DPT',
                         help='decoder')
-    parser.add_argument('--encoder', type=str, default='vits',
+    parser.add_argument('--encoder', type=str, default='vitl',
                         help='encoder')
 
-    parser.add_argument("--multi_task", action="store_true", help="Whether to add classification branch.")
+    parser.add_argument("--multi_task", action="store_true", help="Whether to add segmentation branch.")
     parser.add_argument("--combine_class", action="store_true", help="Whether to combine 8 classes to 3.")
     
     parser.add_argument("--apply_da",  nargs='*', type=str, default=['HM', 'PDA'], help="style transfer methods")
+    ###style transfer methods' parameter
     parser.add_argument("--FDA_beta", type=float, default=0.05, help="beta of FDA")
     parser.add_argument("--HM_blend_ratio",  nargs='*', type=float, default=(0.8, 1), help="blend ratio of HM")
     parser.add_argument("--PDA_blend_ratio",  nargs='*', type=float, default=(0.8, 1), help="blend ratio of PDA")
     parser.add_argument("--PDA_type", type=str, default='standard', help="transformation type of PDA")
+    ###
     parser.add_argument("--tgt_datasets",  nargs='*', type=str, default=['DFC18'], help="target datasets list used for style transfer")
-    parser.add_argument("--max_da_images", type=int, default=1200, help="Number of images used for da.")
+    parser.add_argument("--max_da_images", type=int, default=1200, help="Number of images used for style transfer.")
     
     parser.add_argument("--batch_size", type=int, default=2, help="batchsize")
     
     parser.add_argument("--learning_rate", type=float, default=1e-6, help="Base learning rate for training with polynomial decay.")
-    parser.add_argument("--decoder_lr_weight", type=float, default=10, help="weight of decoder lr")
+    parser.add_argument("--decoder_lr_weight", type=float, default=10, help="weight of decoder lr, defalut are 10 times of encoder's lr")
 
     parser.add_argument("--num_steps", type=int, default=40000, help="Number of training steps.")
     parser.add_argument("--start_iters", type=int, default=0, help="start_iters")
@@ -79,18 +81,18 @@ def get_arguments():
     parser.add_argument("--save_num_images", type=int, default=5, help="How many images to save.")
     parser.add_argument("--save_pred_every", type=int, default=500, help="Save summaries and checkpoint every often.")
     parser.add_argument("--snapshot_dir", type=str, default='snapshot', help="Where to save snapshots of the model.")
-    parser.add_argument("--only_save_best", action="store_true", help="only save best")
+    parser.add_argument("--only_save_best", action="store_true", help="only save best checkpoint")
     
     parser.add_argument("--lambda_dsms", type=float, default=0.8, help="weight of height estimation loss")
-    parser.add_argument("--eval_oem", action="store_true", help="eval oem or not")
+    parser.add_argument("--eval_oem", action="store_true", help="evaluation on OEM dataset or not")
 
-    parser.add_argument("--pretrained", action="store_true", help="fine-tune the model with large input size.")
+    parser.add_argument("--pretrained", action="store_true", help="use pretrained DINOv2 or not.")
     parser.add_argument("--shuffle", action="store_true", help="shuffle or not")
-    parser.add_argument("--feat_loss", action="store_true", help="use feat loss or not")
+    parser.add_argument("--feat_loss", action="store_true", help="use feature constraint loss or not")
     parser.add_argument("--fl_start", type=int, default=3, help="calculate feature loss from which layer")
-    parser.add_argument("--fl_threshold", type=float, default=0.8, help="threshold")
-    parser.add_argument("--fl_weight", type=float, default=1., help="threshold")
-    parser.add_argument("--fl_decrement", type=float, default=0.05, help="threshold")
+    parser.add_argument("--fl_threshold", type=float, default=0.8, help="threshold, ϵ in formula [4]")
+    parser.add_argument("--fl_weight", type=float, default=1., help="weight of feature constraint loss")
+    parser.add_argument("--fl_decrement", type=float, default=0.05, help="This value determines how much the threshold decreases per layer")
 
     return parser.parse_args()
     
