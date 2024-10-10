@@ -94,7 +94,7 @@ Here is the table of real-world elevation datasets we used:
 |                    | Nagoya           | [NTT DATA Corporation and Inc. DigitalGlobe](https://www.nttdata.com/global/en/news/press-release/2017/february/digitalglobe-and-ntt-data-corporation-announce-partnership-to-expand-usage-of-elevation-data) | End User License Agreement                                        |
 |                    | Tokyo            | [NTT DATA Corporation and Inc. DigitalGlobe](https://www.nttdata.com/global/en/news/press-release/2017/february/digitalglobe-and-ntt-data-corporation-announce-partnership-to-expand-usage-of-elevation-data) | End User License Agreement                                        |
 
-We provide those redistributable datasets that have been preprocessed by ourselves. For datasets like ISPRS, which do not allow redistribution, we provide a script to process them in ```./prepare_ISPRS_datasets```. For commercial datasets, we cannot provide them directly.
+❗❗❗ We provide those redistributable datasets that have been preprocessed by ourselves. For datasets like ISPRS, which do not allow redistribution, we provide a script to process them in ```./prepare_ISPRS_datasets```. For commercial datasets like Nagoya and Tokyo, we cannot provide them directly.
 
 ### (Optional) Land Cover Mapping Real-World Dataset
 
