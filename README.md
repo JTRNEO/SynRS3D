@@ -11,7 +11,7 @@
 
 <sup>1</sup> The University of Tokyo, <sup>2</sup> RIKEN AIP
 
-[![arXiv paper](https://img.shields.io/badge/arXiv-paper-b31b1b.svg)](https://arxiv.org/pdf/2406.18151) [![HF Datasets](https://img.shields.io/badge/%F0%9F%A4%97-Datasets-yellow?style=flat-square)](https://huggingface.co/datasets/JTRNEO/SynRS3D) [![Zenodo Datasets](https://img.shields.io/badge/Zenodo-Datasets-blue)](https://zenodo.org/uploads/13905264)[![HF Models](https://img.shields.io/badge/%F0%9F%A4%97-Models-yellow?style=flat-square)](https://huggingface.co/JTRNEO/RS3DAda)
+[![arXiv paper](https://img.shields.io/badge/arXiv-paper-b31b1b.svg)](https://arxiv.org/pdf/2406.18151) [![HF Datasets](https://img.shields.io/badge/%F0%9F%A4%97-Datasets-yellow?style=flat-square)](https://huggingface.co/datasets/JTRNEO/SynRS3D) [![Zenodo Datasets](https://img.shields.io/badge/Zenodo-Datasets-blue)](https://zenodo.org/uploads/13905264) [![HF Models](https://img.shields.io/badge/%F0%9F%A4%97-Models-yellow?style=flat-square)](https://huggingface.co/JTRNEO/RS3DAda)
 
 
 
@@ -94,7 +94,7 @@ Here is the table of real-world elevation datasets we used:
 |                    | Nagoya           | [NTT DATA Corporation and Inc. DigitalGlobe](https://www.nttdata.com/global/en/news/press-release/2017/february/digitalglobe-and-ntt-data-corporation-announce-partnership-to-expand-usage-of-elevation-data) | End User License Agreement                                        |
 |                    | Tokyo            | [NTT DATA Corporation and Inc. DigitalGlobe](https://www.nttdata.com/global/en/news/press-release/2017/february/digitalglobe-and-ntt-data-corporation-announce-partnership-to-expand-usage-of-elevation-data) | End User License Agreement                                        |
 
-We provide those redistributable datasets that have been preprocessed by ourselves. For datasets like ISPRS, which do not allow redistribution, we provide a script to process them in ```./prepare_ISPRS_datasets```. For commercial datasets, we cannot provide them directly.
+❗❗❗ We provide those redistributable datasets that have been preprocessed by ourselves. For datasets like ISPRS, which do not allow redistribution, we provide a script to process them in ```./prepare_ISPRS_datasets```. For commercial datasets like Nagoya and Tokyo, we cannot provide them directly.
 
 ### (Optional) Land Cover Mapping Real-World Dataset
 
@@ -154,12 +154,13 @@ The redistributable datasets can be downloaded from the links provided below:
 
 ### Data Structure:
 
-For SynRS3D and real-world datasets, the data is expected in the following structure:
+For real-world datasets, the data is expected in the following structure:
 
 ```
-${DATASET_ROOT} # Dataset root directory, e.g., /home/username/project/SynRS3D/data/DFC18
+${DATASET_ROOT} # Dataset root directory, e.g., /home/username/project/SynRS3D/data/DFC19_JAX
 ├── opt              # RGB images saved as .tif
 ├── gt_nDSM          # Normalized Digital Surface Model images saved as .tif
+├── gt_ss_mask       # Land cover mapping labels saved as .tif (some datasets like DFC18 do not include land cover mapping labels)
 ├── train.txt        # List of training data names without suffix
 └── test.txt         # List of testing data names without suffix
 ```
