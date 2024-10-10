@@ -85,14 +85,14 @@ Here is the table of real-world elevation datasets we used:
 | **Target Domain 1** | DFC18            | [2018 IEEE GRSS Data Fusion Challenge](https://ieee-dataport.org/open-access/2018-ieee-grss-data-fusion-challenge-%E2%80%93-fusion-multispectral-lidar-and-hyperspectral-data) | [Creative Commons Attribution](https://creativecommons.org/licenses/by/4.0/) |
 |                    | DFC19_JAX        | [Data Fusion Contest 2019](https://ieee-dataport.org/open-access/data-fusion-contest-2019-dfc2019)          | [Creative Commons Attribution](https://creativecommons.org/licenses/by/4.0/) |
 |                    | DFC19_OMA        | [Data Fusion Contest 2019](https://ieee-dataport.org/open-access/data-fusion-contest-2019-dfc2019)          | [Creative Commons Attribution](https://creativecommons.org/licenses/by/4.0/) |
-|                    | geonrw_Urban     | [GeoNRW](https://ieee-dataport.org/open-access/geonrw)                                                      | [Creative Commons Attribution](https://creativecommons.org/licenses/by/4.0/) |
+|                    | geonrw_urban     | [GeoNRW](https://ieee-dataport.org/open-access/geonrw)                                                      | [Creative Commons Attribution](https://creativecommons.org/licenses/by/4.0/) |
 |                    | geonrw_rural     | [GeoNRW](https://ieee-dataport.org/open-access/geonrw)                                                      | [Creative Commons Attribution](https://creativecommons.org/licenses/by/4.0/) |
-|                    | Potsdam          | [ISPRS](https://www.isprs.org/education/benchmarks/UrbanSemLab/2d-sem-label-potsdam.aspx)                   | Research Purposes Only, No Redistribution                          |
+|                    | Potsdam          | [ISPRS](https://www.isprs.org/education/benchmarks/UrbanSemLab/2d-sem-label-potsdam.aspx)                   | Redistribution is not allowed                          |
 | **Target Domain 2** | OGC_ATL          | [Overhead Geopose Challenge](https://www.drivendata.org/competitions/78/overhead-geopose-challenge/page/394/) | [Creative Commons Attribution](https://creativecommons.org/licenses/by/4.0/) |
 |                    | OGC_ARG          | [Overhead Geopose Challenge](https://www.drivendata.org/competitions/78/overhead-geopose-challenge/page/394/) | [Creative Commons Attribution](https://creativecommons.org/licenses/by/4.0/) |
-|                    | Vaihingen        | [ISPRS](https://www.isprs.org/education/benchmarks/UrbanSemLab/2d-sem-label-vaihingen.aspx)                 | Research Purposes Only, No Redistribution                          |
-|                    | Nagoya           | [NTT DATA Corporation and Inc. DigitalGlobe](https://www.nttdata.com/global/en/news/press-release/2017/february/digitalglobe-and-ntt-data-corporation-announce-partnership-to-expand-usage-of-elevation-data) | End User License Agreement                                        |
-|                    | Tokyo            | [NTT DATA Corporation and Inc. DigitalGlobe](https://www.nttdata.com/global/en/news/press-release/2017/february/digitalglobe-and-ntt-data-corporation-announce-partnership-to-expand-usage-of-elevation-data) | End User License Agreement                                        |
+|                    | Vaihingen        | [ISPRS](https://www.isprs.org/education/benchmarks/UrbanSemLab/2d-sem-label-vaihingen.aspx)                 | Redistribution is not allowed                          |
+|                    | Nagoya           | [NTT DATA Corporation and Inc. DigitalGlobe](https://www.nttdata.com/global/en/news/press-release/2017/february/digitalglobe-and-ntt-data-corporation-announce-partnership-to-expand-usage-of-elevation-data) | End User License Agreement (Commercial)                                         |
+|                    | Tokyo            | [NTT DATA Corporation and Inc. DigitalGlobe](https://www.nttdata.com/global/en/news/press-release/2017/february/digitalglobe-and-ntt-data-corporation-announce-partnership-to-expand-usage-of-elevation-data) | End User License Agreement (Commercial)                                        |
 
 ❗❗❗ We provide those redistributable datasets that have been preprocessed by ourselves. For datasets like ISPRS, which do not allow redistribution, we provide a script to process them in ```./prepare_ISPRS_datasets```. For commercial datasets like Nagoya and Tokyo, we cannot provide them directly.
 
@@ -190,7 +190,7 @@ ${DATASET_ROOT} # Dataset root directory, e.g., /home/username/project/SynRS3D/d
 
 ## 🤖 Training
 
-Due to restrictions on open-sourcing certain real-world datasets, it may not be possible to reproduce the exact results from the original paper. However, to assist with reproducibility, we provide results from experiments conducted on redistributable real-world datasets. Below are the key findings.
+Due to restrictions on open-sourcing certain real-world datasets, it may not be possible to reproduce all the exact results from the original paper. However, to assist with reproducibility, we provide results from experiments conducted on redistributable real-world datasets. Below are the key findings.
 
 ### Height Estimation Results  
 *Best results based on the average of DFC18, DFC19_JAX, DFC19_OMA, geonrw_rural, geonrw_urban, OGC_ARG, and OGC_ATL datasets.*
