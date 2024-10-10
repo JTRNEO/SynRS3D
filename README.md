@@ -72,7 +72,7 @@ Note that the code in this repo runs under **Linux** system. We have not tested 
 
 ### Download the SynRS3D dataset:
 
-- **SynRS3D:** [![HF Datasets](https://img.shields.io/badge/%F0%9F%A4%97-Datasets-yellow?style=flat-square)](https://huggingface.co/datasets/JTRNEO/SynRS3D) [![Zenodo Datasets](https://img.shields.io/badge/Zenodo-Datasets-blue)](https://zenodo.org/uploads/13905264)
+- **SynRS3D:** [![HF Datasets](https://img.shields.io/badge/%F0%9F%A4%97-Datasets-yellow?style=flat-square)](https://huggingface.co/datasets/JTRNEO/SynRS3D) or [![Zenodo Datasets](https://img.shields.io/badge/Zenodo-Datasets-blue)](https://zenodo.org/uploads/13905264)
 
     Place all zip files under `./SynRS3D/data` and extract them.
 
