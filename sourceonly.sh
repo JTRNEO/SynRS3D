@@ -5,7 +5,7 @@ test_set=('DFC18' 'DFC19_JAX' 'DFC19_OMA' 'geonrw_rural' 'geonrw_urban' 'OGC_ARG
 images_file=('train.txt' 'test_syn.txt' 'train.txt')
 da=()
 
-/home/songjian/anaconda3/envs/mmseg/bin/python train_dpt_sourceonly.py \
+python train_dpt_sourceonly.py \
 --datasets ${train_set[*]} \
 --test_datasets ${test_set[*]} \
 --ood_datasets ${test_set[*]} \
