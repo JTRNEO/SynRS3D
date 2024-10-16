@@ -11,7 +11,7 @@
 
 <sup>1</sup> The University of Tokyo, <sup>2</sup> RIKEN AIP
 
-[![arXiv paper](https://img.shields.io/badge/arXiv-paper-b31b1b.svg)](https://arxiv.org/pdf/2406.18151) [![Zenodo Datasets](https://img.shields.io/badge/Zenodo-Datasets-blue)](https://zenodo.org/uploads/13905264) [![Zenodo Models](https://img.shields.io/badge/Zenodo-Models-blue)](https://zenodo.org/records/13940407)
+[![arXiv paper](https://img.shields.io/badge/arXiv-paper-b31b1b.svg)](https://arxiv.org/pdf/2406.18151) [![Zenodo Datasets](https://img.shields.io/badge/Zenodo-Datasets-blue)](https://zenodo.org/records/13905264) [![Zenodo Models](https://img.shields.io/badge/Zenodo-Models-blue)](https://zenodo.org/records/13940407)
 
 
 
