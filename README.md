@@ -265,14 +265,19 @@ python infer_segmentation.py \
 
 If this code or dataset contributes to your research, please kindly consider citing our paper and give this repo ⭐️ :)
 ```
-@misc{song2024synrs3dsyntheticdatasetglobal,
-      title={SynRS3D: A Synthetic Dataset for Global 3D Semantic Understanding from Monocular Remote Sensing Imagery}, 
-      author={Jian Song and Hongruixuan Chen and Weihao Xuan and Junshi Xia and Naoto Yokoya},
-      year={2024},
-      eprint={2406.18151},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2406.18151}, 
+@article{song2024synrs3d,
+  title={SynRS3D: A Synthetic Dataset for Global 3D Semantic Understanding from Monocular Remote Sensing Imagery},
+  author={Song, Jian and Chen, Hongruixuan and Xuan, Weihao and Xia, Junshi and Yokoya, Naoto},
+  journal={arXiv preprint arXiv:2406.18151},
+  year={2024}
+}
+
+@inproceedings{song2024syntheworld,
+  title={SyntheWorld: A Large-Scale Synthetic Dataset for Land Cover Mapping and Building Change Detection},
+  author={Song, Jian and Chen, Hongruixuan and Yokoya, Naoto},
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+  pages={8287--8296},
+  year={2024}
 }
 ```
 
