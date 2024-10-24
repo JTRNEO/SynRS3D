@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="SynRS3D: A Synthetic Dataset for Global 3D Semantic Understanding from Monocular Remote Sensing Imagery">
+  <meta name="keywords" content="Synthetic Dataset, Remote Sensing, 3D Semantic Understanding">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SynRS3D: A Synthetic Dataset for Global 3D Semantic Understanding from Monocular Remote Sensing Imagery</title>
+<!-- Add this in the head section -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+    background-color: #f9f9f9;  /* Soft background color for better contrast */
+  }
+
+  .title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #8C1515;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #333;
+    margin-top: 0;
+  }
+
+  section {
+    padding: 4rem 0;  /* Increased padding for visual separation */
+  }
+
+  .hero {
+    background: url('static/images/hero_background.jpg') center/cover no-repeat;
+    color: white;
+    padding: 6rem 0;
+  }
+
+  .button.is-dark {
+    background-color: #333;
+    color: #fff;
+    border: none;
+  }
+
+  .button.is-dark:hover {
+    background-color: #555; /* Adding hover effect for buttons */
+  }
+
+  .image img {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Adding a subtle shadow */
+  }
+
+  .link-block {
+    margin-bottom: 1rem;
+  }
+
+  .sticky-nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  /* Lightbox effect for images */
+  .lightbox {
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .lightbox:hover {
+    transform: scale(1.05);
+  }
+
+  .hero-body .container {
+    max-width: 1200px;
+    padding: 2rem;
+  }
+
+  /* Section background alternating */
+  section:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  section:nth-child(odd) {
+    background-color: #f5f5f5;
+  }
+
+  .footer {
+    padding: 2rem 1rem;
+    background-color: #333;
+    color: #fff;
+  }
+
+  .footer a {
+    color: #fff;
+  }
+
+  .footer a:hover {
+    color: #8C1515;
+  }
+
+  a {
+    color: #3da9fc;
+    transition: color 0.3s ease-in-out;
+  }
+
+  a:hover {
+    color: #ff6b6b;
+  }
+
+  .hero {
+    padding: 6rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }  
+</style>
+
+
+  <!-- External Stylesheets -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+<!-- Add this sticky navigation -->
+<nav class="sticky-nav">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        <a href="#overview" class="button is-link is-light">Paper Overview</a>
+        <a href="#reconstruction" class="button is-link is-light">3D Reconstruction</a>
+        <a href="#dataset" class="button is-link is-light">Dataset Construction</a>
+        <a href="#statistics" class="button is-link is-light">Statistics</a>
+        <a href="#method" class="button is-link is-light">RS3DAda Method</a>
+        <a href="#experimental-settings" class="button is-link is-light">Experimental Settings</a>
+        <a href="#results" class="button is-link is-light">Results</a>
+        <a href="#applications" class="button is-link is-light">Applications</a>
+        <a href="#bibtex" class="button is-link is-light">BibTeX</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Add smooth scrolling JS at the end of the HTML before </body> -->
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+
+<!-- Scripts moved to the bottom for performance -->
+</head>
+<body>
+
+<!-- Combined Hero, Logos, and Links Section -->
+<section class="hero" style="background: linear-gradient(to bottom, #e0f7fa, #ffffff); padding: 4rem 0;">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <!-- Title and Subtitle -->
+          <div class="title is-flex is-align-items-center is-justify-content-center" style="color: #1790db;">
+            <span class="icon" style="margin-right: 30px;">
+              <img src="static/images/icon_synrs3d.png" alt="SynRS3D Icon" style="width: 60px; height: 65px; max-width: none; max-height: none;">
+            </span>
+            <span class="is-block" style="font-size: 3rem;">SynRS3D</span>
+          </div>
+          <div class="subtitle" style="font-size: 1.5rem; color: #0f2478;">
+            A Synthetic Dataset for Global 3D Semantic Understanding from Monocular Remote Sensing Imagery
+          </div> 
+
+          <!-- Authors -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=CgcMFJsAAAAJ" style="color: #3da9fc; text-decoration: none;">Jian Song</a><sup style="color: #1790db;">1, 2</sup><span style="color: #1790db;">,</span>
+            </span>
+            <span class="author-block">
+              <a href="https://chrx97.com/" style="color: #3da9fc; text-decoration: none;">Hongruixuan Chen</a><sup style="color: #1790db;">1, 2</sup><span style="color: #1790db;">,</span>
+            </span>
+            <span class="author-block">
+              <a href="https://weihaoxuan.com/" style="color: #3da9fc; text-decoration: none;">Weihao Xuan</a><sup style="color: #1790db;">1, 2</sup><span style="color: #1790db;">,</span>
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=n1aKdTkAAAAJ" style="color: #3da9fc; text-decoration: none;">Junshi Xia</a><sup style="color: #1790db;">2</sup><span style="color: #1790db;">,</span>
+            </span>
+            <span class="author-block">
+              <a href="https://naotoyokoya.com/" style="color: #3da9fc; text-decoration: none;">Naoto Yokoya</a><sup style="color: #1790db;">1, 2</sup>
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors" style="color: #b0b7c3;">
+            <p><sup>1</sup> The University of Tokyo, <sup>2</sup> RIKEN AIP</p>
+          </div>
+          <h2 class="subtitle" style="color: #ffc107;">NeurIPS (<span style="color: #ffc107;">Spotlight</span>), 2024</h2>
+
+          <!-- Logos Section -->
+          <div class="has-text-centered" style="margin-top: 2rem;">
+            <img src="./static/images/icon_utokyo.png" alt="UTokyo Logo" width="110" height="110" style="margin-right: 40px;">
+            <img src="./static/images/icon_riken.png" alt="RIKEN Logo" width="70" height="70" style="position: relative; top: -8px;">
+          </div>
+
+          <!-- Links Section -->
+          <div class="has-text-centered" style="margin-top: 3rem;">
+            <span class="link-block">
+              <a href="https://github.com/JTRNEO/SynRS3D" class="external-link button is-dark is-rounded">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://arxiv.org/pdf/2406.18151" class="external-link button is-dark is-rounded">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://zenodo.org/records/13905264" class="external-link button is-dark is-rounded">
+                <span class="icon"><i class="fa fa-database"></i></span>
+                <span>Dataset</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://zenodo.org/records/13940407" class="external-link button is-dark is-rounded">
+                <span class="icon"><i class="fas fa-file-archive"></i></span>
+                <span>Models</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Abstract Section -->
+<section id="abstract" style="margin-top: -8rem;">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>Global semantic 3D understanding from single-view high-resolution remote sensing (RS) imagery is crucial for Earth observation (EO). However, this task faces significant challenges due to the high costs of annotations and data collection, as well as geographically restricted data availability. To address these challenges, synthetic data offer a promising solution by being unrestricted and automatically annotatable, thus enabling the provision of large and diverse datasets. We develop a specialized synthetic data generation pipeline for EO and introduce SynRS3D, the largest synthetic RS dataset. SynRS3D comprises 69,667 high-resolution optical images that cover six different city styles worldwide and feature eight land cover types, precise height information, and building change masks. To further enhance its utility, we develop a novel multi-task unsupervised domain adaptation (UDA) method, RS3DAda, coupled with our synthetic dataset, which facilitates the RS-specific transition from synthetic to real scenarios for land cover mapping and height estimation tasks, ultimately enabling global monocular 3D semantic understanding based on synthetic data. Extensive experiments on various real-world datasets demonstrate the adaptability and effectiveness of our synthetic dataset and the proposed RS3DAda method.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contributions Overview -->
+<section class="section" style="margin-bottom: 3rem;">
+  <div class="container">
+    <h2 class="title is-3">Paper Overview</h2>
+    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <div class="card-image">
+        <figure class="image lightbox">
+          <img src="static/images/overview.png" alt="Paper Overview" style="border-radius: 8px;">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p class="content">SynRS3D is the largest synthetic dataset for remote sensing, paired with RS3DAda, a multi-task UDA training method. The trained model can be applied to various real-world remote sensing applications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Results Section -->
+<section class="section" style="margin-bottom: 3rem;">
+  <div class="container">
+    <h2 class="title is-3">Global 3D Semantic Reconstruction</h2>
+    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <div class="card-image">
+        <figure class="image lightbox">
+          <img src="static/images/vis3d.png" alt="Globally 3D Semantic Reconstruction" style="border-radius: 8px;">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p class="content">Using RS3DAda, we trained models on purely synthetic SynRS3D data to achieve global 3D semantic reconstruction based on real-world monocular remote sensing images.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SynRS3D Dataset Construction -->
+<section class="section" style="margin-bottom: 3rem;">
+  <div class="container">
+    <h2 class="title is-3">SynRS3D Construction Process</h2>
+    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <div class="card-image">
+        <figure class="image lightbox">
+          <img src="static/images/dataset_construction.png" alt="Dataset Construction Flowchart" style="border-radius: 8px;">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p class="content">We built a procedural modeling system using Blender and Python, simulating six global urban styles, and programmatically generating RGB images, land cover annotations, and nDSM data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SynRS3D Statistical Information -->
+<section class="section" style="margin-bottom: 3rem;">
+  <div class="container">
+    <h2 class="title is-3">Comparison, Examples, & Statistics</h2>
+
+    <!-- Comparison Chart Card -->
+    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <div class="card-image">
+        <figure class="image lightbox">
+          <img src="static/images/comparison.png" alt="SynRS3D Comparison Chart" style="border-radius: 8px;">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p class="content">Comparison between SynRS3D and existing synthetic remote sensing datasets across various aspects, including diversity, image capture, assets, supported tasks, scale, and size.</p>
+      </div>
+    </div>
+
+    <!-- Statistical Information Card -->
+    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <div class="card-image">
+        <figure class="image lightbox">
+          <img src="static/images/statistical_web.png" alt="SynRS3D Statistical Information" style="border-radius: 8px;">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p class="content">Examples of SynRS3D data samples, including six urban styles (RGB, land cover, height map), along with statistical comparisons to other synthetic and real datasets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RS3DAda Method -->
+<section class="section" style="margin-bottom: 3rem;">
+  <div class="container">
+    <h2 class="title is-3">RS3DAda Framework</h2>
+    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <div class="card-image">
+        <figure class="image lightbox">
+          <img src="static/images/rs3dada.png" alt="RS3DAda Flowchart" style="border-radius: 8px;">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p class="content">The RS3DAda framework is a multi-task UDA model based on a teacher-student training fashion, which is the first UDA model tailored to the remote sensing field for synthetic-to-real adaptation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experimental Settings -->
+<section class="section" style="margin-bottom: 3rem;">
+  <div class="container">
+    <h2 class="title is-3">Experimental Settings</h2>
+    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <div class="card-image">
+        <figure class="image lightbox">
+          <img src="static/images/experimental_setting.png" alt="Experimental Settings" style="border-radius: 8px;">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p class="content">We have three experimental settings: (1) Source-only, (2) Combining SynRS3D with Real Data Scenarios, and (3) Transfer SynRS3D to Real-World Scenarios to verify RS3DAda's effectiveness.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Numerical Experimental Results -->
+<section class="section" style="margin-bottom: 3rem;">
+  <div class="container">
+    <h2 class="title is-3">Benchmark Results for Different Scenarios</h2>
+
+    <!-- Scenario 1 Card -->
+    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <div class="card-image">
+        <figure class="image lightbox">
+          <img src="static/images/senario1_result.png" alt="Scenario 1 Results" style="border-radius: 8px;">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p class="content">Results for Source-only Setting, highlighting the baseline performance using SynRS3D dataset.</p>
+      </div>
+    </div>
+
+    <!-- Scenario 2 Card -->
+    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <div class="card-image">
+        <figure class="image lightbox">
+          <img src="static/images/senario2_result.png" alt="Scenario 2 Results" style="border-radius: 8px;">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p class="content">Results for Combining SynRS3D with Real Data Scenarios, showcasing the improvements made by using mixed datasets.</p>
+      </div>
+    </div>
+
+    <!-- Scenario 3 Card -->
+    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <div class="card-image">
+        <figure class="image lightbox">
+          <img src="static/images/senario3_result.png" alt="Scenario 3 Results" style="border-radius: 8px;">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p class="content">Results for Transfer SynRS3D to Real-World Scenarios, validating the effectiveness of RS3DAda for real-world applications.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Visualization Results for Land Cover and Height Estimation -->
+<section class="section" style="margin-bottom: 3rem;">
+  <div class="container">
+    <h2 class="title is-3">Qualitative Results</h2>
+    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <div class="card-image">
+        <figure class="image lightbox">
+          <img src="static/images/qualitative_result.png" alt="Qualitative Results for Land Cover and Height" style="border-radius: 8px;">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p class="content">Qualitative results showing left: height estimation, right: land cover mapping tasks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SynRS3D Applications -->
+<section class="section" style="margin-bottom: 3rem;">
+  <div class="container">
+    <h2 class="title is-3">Extended Earth Observation Applications of SynRS3D</h2>
+
+    <!-- Building Change Detection Card -->
+    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <div class="card-image">
+        <figure class="image lightbox">
+          <img src="static/images/application1.png" alt="Building Change Detection" style="border-radius: 8px;">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p class="content">Application of SynRS3D in building change detection.</p>
+      </div>
+    </div>
+
+    <!-- Disaster Mapping Card -->
+    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <div class="card-image">
+        <figure class="image lightbox">
+          <img src="static/images/application2.png" alt="Disaster Mapping" style="border-radius: 8px;">
+        </figure>
+      </div>
+      <div class="card-content">
+        <p class="content">Application of SynRS3D in disaster mapping for timely and accurate assessment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BibTeX Section -->
+<section class="hero teaser">
+  <div class="hr"></div>
+  <div class="bibtex-container">
+    <h3 class="title is-3 has-text-centered">BibTeX</h3>
+    <pre>@misc{song2024synrs3dsyntheticdatasetglobal,
+    title={SynRS3D: A Synthetic Dataset for Global 3D Semantic Understanding from Monocular Remote Sensing Imagery}, 
+    author={Jian Song and Hongruixuan Chen and Weihao Xuan and Junshi Xia and Naoto Yokoya},
+    year={2024},
+    eprint={2406.18151},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV},
+    url={https://arxiv.org/abs/2406.18151}, 
+}</pre>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a href="https://github.com/nerfies/nerfies.github.io" class="icon-link" style="color: #4A4A4A;">
+        <i class="fab fa-github"></i>
+      </a>
+      <p style="color: #4A4A4A;">This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io" style="color: #3273DC;">nerfie</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- External JS moved to the bottom for performance -->
+<!-- Add lightbox JavaScript at the bottom -->
+<script>
+  document.querySelectorAll('.lightbox img').forEach(image => {
+    image.addEventListener('click', () => {
+      const lightboxContainer = document.createElement('div');
+      lightboxContainer.style.position = 'fixed';
+      lightboxContainer.style.top = '0';
+      lightboxContainer.style.left = '0';
+      lightboxContainer.style.width = '100%';
+      lightboxContainer.style.height = '100%';
+      lightboxContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+      lightboxContainer.style.display = 'flex';
+      lightboxContainer.style.alignItems = 'center';
+      lightboxContainer.style.justifyContent = 'center';
+      lightboxContainer.style.zIndex = '1000';
+      
+      const img = document.createElement('img');
+      img.src = image.src;
+      img.style.maxWidth = '90%';
+      img.style.maxHeight = '90%';
+      img.style.border = '5px solid #fff';
+      img.style.boxShadow = '0 0 20px rgba(0, 0, 0, 0.5)';
+      
+      lightboxContainer.appendChild(img);
+      document.body.appendChild(lightboxContainer);
+      
+      lightboxContainer.addEventListener('click', () => {
+        document.body.removeChild(lightboxContainer);
+      });
+    });
+  });
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script defer src="./static/js/fontawesome.all.min.js"></script>
+<script src="./static/js/bulma-carousel.min.js"></script>
+<script src="./static/js/bulma-slider.min.js"></script>
+<script src="./static/js/index.js"></script>
+
+</body>
+</html>
+
