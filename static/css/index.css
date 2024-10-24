@@ -155,3 +155,45 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust size */
+  gap: 20px;
+  justify-items: center;
+}
+
+.image-grid img {
+  width: 100%;
+  max-width: 250px;  /* Limit image size */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.content {
+  text-align: justify; /* Makes long paragraphs more readable */
+  padding: 0 20px;
+}
+
+section {
+  padding: 3rem 0; /* Reduce excessive padding */
+}
+
+.sticky-nav a {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .sticky-nav a {
+    font-size: 0.9rem;
+  }
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}

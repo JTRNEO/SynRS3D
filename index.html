@@ -139,12 +139,13 @@
     <div class="columns is-centered">
       <div class="column has-text-centered">
         <a href="#overview" class="button is-link is-light">Paper Overview</a>
-        <a href="#reconstruction" class="button is-link is-light">3D Reconstruction</a>
         <a href="#dataset" class="button is-link is-light">Dataset Construction</a>
         <a href="#statistics" class="button is-link is-light">Statistics</a>
-        <a href="#method" class="button is-link is-light">RS3DAda Method</a>
-        <a href="#experimental-settings" class="button is-link is-light">Experimental Settings</a>
-        <a href="#results" class="button is-link is-light">Results</a>
+        <a href="#method" class="button is-link is-light">RS3DAda</a>
+        <a href="#experimental-settings" class="button is-link is-light">Benchmark Experiments</a>
+        <a href="#results" class="button is-link is-light">Quantitative Results</a>
+        <a href="#visresults" class="button is-link is-light">Qualitative Results</a>
+        <a href="#reconstruction" class="button is-link is-light">Monocular 3D Reconstruction</a>
         <a href="#applications" class="button is-link is-light">Applications</a>
         <a href="#bibtex" class="button is-link is-light">BibTeX</a>
       </div>
@@ -262,9 +263,11 @@
 </section>
 
 <!-- Contributions Overview -->
-<section class="section" style="margin-bottom: 3rem;">
+<section id="overview" class="section" style="margin-bottom: 3rem;">
   <div class="container">
-    <h2 class="title is-3">Paper Overview</h2>
+    <h2 class="title is-2" style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #1790db;">
+      Paper Overview
+    </h2>
     <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
       <div class="card-image">
         <figure class="image lightbox">
@@ -279,9 +282,11 @@
 </section>
 
 <!-- Results Section -->
-<section class="section" style="margin-bottom: 3rem;">
+<section id= "reconstruction" class="section" style="margin-bottom: 3rem;">
   <div class="container">
-    <h2 class="title is-3">Global 3D Semantic Reconstruction</h2>
+    <h2 class="title is-2" style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #1790db;">
+      Global 3D Semantic Reconstruction
+    </h2>
     <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
       <div class="card-image">
         <figure class="image lightbox">
@@ -296,9 +301,11 @@
 </section>
 
 <!-- SynRS3D Dataset Construction -->
-<section class="section" style="margin-bottom: 3rem;">
+<section id="dataset" class="section" style="margin-bottom: 3rem;">
   <div class="container">
-    <h2 class="title is-3">SynRS3D Construction Process</h2>
+    <h2 class="title is-2" style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #1790db;">
+      SynRS3D Construction Process
+    </h2>
     <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
       <div class="card-image">
         <figure class="image lightbox">
@@ -313,10 +320,11 @@
 </section>
 
 <!-- SynRS3D Statistical Information -->
-<section class="section" style="margin-bottom: 3rem;">
+<section id="statistics" class="section" style="margin-bottom: 3rem;">
   <div class="container">
-    <h2 class="title is-3">Comparison, Examples, & Statistics</h2>
-
+    <h2 class="title is-2" style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #1790db;">
+      Comparison & Examples & Statistics
+    </h2>
     <!-- Comparison Chart Card -->
     <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
       <div class="card-image">
@@ -344,9 +352,11 @@
 </section>
 
 <!-- RS3DAda Method -->
-<section class="section" style="margin-bottom: 3rem;">
+<section id="method" class="section" style="margin-bottom: 3rem;">
   <div class="container">
-    <h2 class="title is-3">RS3DAda Framework</h2>
+    <h2 class="title is-2" style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #1790db;">
+      RS3DAda Framework
+    </h2>
     <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
       <div class="card-image">
         <figure class="image lightbox">
@@ -361,9 +371,11 @@
 </section>
 
 <!-- Experimental Settings -->
-<section class="section" style="margin-bottom: 3rem;">
+<section id="experimental-settings" class="section" style="margin-bottom: 3rem;">
   <div class="container">
-    <h2 class="title is-3">Experimental Settings</h2>
+    <h2 class="title is-2" style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #1790db;">
+      Experimental Settings
+    </h2>
     <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
       <div class="card-image">
         <figure class="image lightbox">
@@ -378,52 +390,67 @@
 </section>
 
 <!-- Numerical Experimental Results -->
-<section class="section" style="margin-bottom: 3rem;">
+<section id="results" class="section" style="margin-bottom: 3rem;">
   <div class="container">
-    <h2 class="title is-3">Benchmark Results for Different Scenarios</h2>
+    <!-- Main Title with Centered Style -->
+    <h2 class="title is-2" style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #1790db;">
+      Benchmark Results for Different Scenarios
+    </h2>
 
-    <!-- Scenario 1 Card -->
-    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
-      <div class="card-image">
+    <!-- Scenario 1 -->
+    <div class="card" style="margin: 40px 0; padding: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <h3 class="title is-4" style="text-align: center; color: #333;">Scenario 1: Source-only Setting</h3>
+      <div class="card-image" style="margin: 20px 0;">
         <figure class="image lightbox">
           <img src="static/images/senario1_result.png" alt="Scenario 1 Results" style="border-radius: 8px;">
         </figure>
       </div>
-      <div class="card-content">
-        <p class="content">Results for Source-only Setting, highlighting the baseline performance using SynRS3D dataset.</p>
+      <div class="card-content" style="text-align: justify;">
+        <p class="content">
+          Results for Source-only Setting, highlighting the baseline performance using SynRS3D dataset.
+        </p>
       </div>
     </div>
 
-    <!-- Scenario 2 Card -->
-    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
-      <div class="card-image">
+    <!-- Scenario 2 -->
+    <div class="card" style="margin: 40px 0; padding: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <h3 class="title is-4" style="text-align: center; color: #333;">Scenario 2: SynRS3D with Real Data Scenarios</h3>
+      <div class="card-image" style="margin: 20px 0;">
         <figure class="image lightbox">
           <img src="static/images/senario2_result.png" alt="Scenario 2 Results" style="border-radius: 8px;">
         </figure>
       </div>
-      <div class="card-content">
-        <p class="content">Results for Combining SynRS3D with Real Data Scenarios, showcasing the improvements made by using mixed datasets.</p>
+      <div class="card-content" style="text-align: justify;">
+        <p class="content">
+          Results for Combining SynRS3D with Real Data Scenarios, showcasing the improvements made by using mixed datasets.
+        </p>
       </div>
     </div>
 
-    <!-- Scenario 3 Card -->
-    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
-      <div class="card-image">
+    <!-- Scenario 3 -->
+    <div class="card" style="margin: 40px 0; padding: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <h3 class="title is-4" style="text-align: center; color: #333;">Scenario 3: Transfer to Real-World Scenarios</h3>
+      <div class="card-image" style="margin: 20px 0;">
         <figure class="image lightbox">
           <img src="static/images/senario3_result.png" alt="Scenario 3 Results" style="border-radius: 8px;">
         </figure>
       </div>
-      <div class="card-content">
-        <p class="content">Results for Transfer SynRS3D to Real-World Scenarios, validating the effectiveness of RS3DAda for real-world applications.</p>
+      <div class="card-content" style="text-align: justify;">
+        <p class="content">
+          Results for Transfer SynRS3D to Real-World Scenarios, validating the effectiveness of RS3DAda for real-world applications.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
+
 <!-- Visualization Results for Land Cover and Height Estimation -->
-<section class="section" style="margin-bottom: 3rem;">
+<section id="visresults" class="section" style="margin-bottom: 3rem;">
   <div class="container">
-    <h2 class="title is-3">Qualitative Results</h2>
+    <h2 class="title is-2" style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #1790db;">
+      Qualitative Results
+    </h2>
     <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
       <div class="card-image">
         <figure class="image lightbox">
@@ -438,38 +465,45 @@
 </section>
 
 <!-- SynRS3D Applications -->
-<section class="section" style="margin-bottom: 3rem;">
+<section id="applications" class="section" style="margin-bottom: 3rem;">
   <div class="container">
-    <h2 class="title is-3">Extended Earth Observation Applications of SynRS3D</h2>
+    <!-- Main Title for Applications -->
+    <h2 class="title is-2" style="text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #1790db;">
+      Extended Earth Observation Applications of SynRS3D
+    </h2>
 
-    <!-- Building Change Detection Card -->
-    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
-      <div class="card-image">
+    <!-- Building Change Detection Application -->
+    <div class="card" style="margin: 40px 0; padding: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <h3 class="title is-4" style="text-align: center; color: #333;">Application 1: Building Change Detection</h3>
+      <div class="card-image" style="margin: 20px 0;">
         <figure class="image lightbox">
           <img src="static/images/application1.png" alt="Building Change Detection" style="border-radius: 8px;">
         </figure>
       </div>
-      <div class="card-content">
-        <p class="content">Application of SynRS3D in building change detection.</p>
+      <div class="card-content" style="text-align: justify;">
+        <p class="content">SynRS3D supports the detection of building changes over time, helping to monitor urban development and environmental changes effectively.</p>
       </div>
     </div>
 
-    <!-- Disaster Mapping Card -->
-    <div class="card" style="margin-top: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
-      <div class="card-image">
+    <!-- Disaster Mapping Application -->
+    <div class="card" style="margin: 40px 0; padding: 20px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);">
+      <h3 class="title is-4" style="text-align: center; color: #333;">Application 2: Disaster Mapping</h3>
+      <div class="card-image" style="margin: 20px 0;">
         <figure class="image lightbox">
           <img src="static/images/application2.png" alt="Disaster Mapping" style="border-radius: 8px;">
         </figure>
       </div>
-      <div class="card-content">
-        <p class="content">Application of SynRS3D in disaster mapping for timely and accurate assessment.</p>
+      <div class="card-content" style="text-align: justify;">
+        <p class="content">SynRS3D plays a crucial role in disaster mapping, providing timely and accurate data for assessing damages after natural disasters like earthquakes and cyclones.</p>
       </div>
     </div>
+
   </div>
 </section>
 
+
 <!-- BibTeX Section -->
-<section class="hero teaser">
+<section id="bibtex" class="hero teaser">
   <div class="hr"></div>
   <div class="bibtex-container">
     <h3 class="title is-3 has-text-centered">BibTeX</h3>
