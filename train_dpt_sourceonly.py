@@ -128,8 +128,7 @@ def main():
     SNAPSHOT_DIR = os.path.join(snapshot_dir, 
                                 decoder_encoder, 
                                 f"{args.crop_size}"+'_'+f"lr_{args.learning_rate}"+'_'+f"wd_{args.weight_decay}",
-                                multi_suffix_combined,
-                                datasets)
+                                multi_suffix_combined)
 
     """Create the model and start the training."""
     if not os.path.exists(SNAPSHOT_DIR):
