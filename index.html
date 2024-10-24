@@ -122,6 +122,29 @@
     padding: 6rem 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }  
+
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .sticky-nav .button {
+    margin: 5px;
+  }
+
+.content {
+  text-align: justify; /* Makes long paragraphs more readable */
+  padding: 0 20px;
+}
+
+section {
+  padding: 3rem 0; /* Reduce excessive padding */
+}
+
 </style>
 
 
@@ -507,15 +530,13 @@
   <div class="hr"></div>
   <div class="bibtex-container">
     <h3 class="title is-3 has-text-centered">BibTeX</h3>
-    <pre>@misc{song2024synrs3dsyntheticdatasetglobal,
-    title={SynRS3D: A Synthetic Dataset for Global 3D Semantic Understanding from Monocular Remote Sensing Imagery}, 
-    author={Jian Song and Hongruixuan Chen and Weihao Xuan and Junshi Xia and Naoto Yokoya},
-    year={2024},
-    eprint={2406.18151},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV},
-    url={https://arxiv.org/abs/2406.18151}, 
-}</pre>
+    <pre>
+      @article{song2024synrs3d,
+      title={SynRS3D: A Synthetic Dataset for Global 3D Semantic Understanding from Monocular Remote Sensing Imagery},
+      author={Song, Jian and Chen, Hongruixuan and Xuan, Weihao and Xia, Junshi and Yokoya, Naoto},
+      journal={arXiv preprint arXiv:2406.18151},
+      year={2024}
+    }</pre>
   </div>
 </section>
 
