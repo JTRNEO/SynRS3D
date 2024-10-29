@@ -1,7 +1,6 @@
 <div align="center">
     <h1 align="center">
-        <img src="figs/icon.png" alt="Description" width="50">
-        SynRS3D
+        <img src="figs/thumbnail_vhr.png" alt="Description" width="600">
     </h1>
     <h3>SynRS3D: A Synthetic Dataset for Global 3D Semantic Understanding from Monocular Remote Sensing Imagery</h3>
     <p><strong>NeurIPS 2024 Spotlight</strong></p>
