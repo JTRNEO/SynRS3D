@@ -41,11 +41,22 @@ def get_arguments():
       A list of parsed arguments.
     """
     parser = argparse.ArgumentParser(description="Evaluation Script")
+    parser.add_argument("--root_dir", type=str, default='/home/songjian/project/SynRS3D/data/', help="Path to the directory containing the datasets.")
     parser.add_argument("--restore_path", type=str, default='', help="trained model path")
     parser.add_argument("--num_classes", type=int, default=8, help="#classes of land cover branch")
     parser.add_argument("--eval_oem", action="store_true", help="eval oem or not")
     parser.add_argument("--test_datasets",  nargs='*', type=str, default=['DFC18'], help="data name list")
     parser.add_argument("--ood_datasets",  nargs='*', type=str, default=['DFC18'], help="data name list")
+    
+    parser.add_argument("--gpu", type=str, default='0', help="choose gpu device.")
+    parser.add_argument('--decoder', type=str, default='DPT',
+                        help='decoder')
+    parser.add_argument('--encoder', type=str, default='vitl',
+                        help='encoder')
+    
+    parser.add_argument("--multi_task", action="store_true", help="Whether to add segmentation branch.")
+    parser.add_argument("--combine_class", action="store_true", help="Whether to combine 8 classes to 3.")
+    
     parser.add_argument("--images_file", nargs='*', type=str, default=['train.txt', 'test_syn.txt', 'test.txt'], help="images txt file for [training, evaluation, style transfer]")
 
     parser.add_argument("--save_num_images", type=int, default=5, help="How many images to save.")
@@ -59,16 +70,13 @@ def main():
     if not os.path.exists(args.snapshot_dir):
         os.makedirs(args.snapshot_dir)
 
-    logger = get_console_file_logger(name=args.decoder + '_' + args.encoder, level=logging.INFO, logdir=args.snapshot_dir)
+    logger = get_console_file_logger(name='test', level=logging.INFO, logdir=args.snapshot_dir)
     
     writer = SummaryWriter(log_dir=args.snapshot_dir + '/runs')
     
-    args_datasets = set(args.datasets)
-    train_dataset_type = get_dataset_category(args_datasets)
-
     if not args.gpu == 'None':
         os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
-
+        
     regression_config = [
         {
             'name': 'regression',
@@ -88,7 +96,7 @@ def main():
     # -----------------------------
     head_configs = regression_config + segmentation_config
         
-    model = DPT_DINOv2(encoder=args.encoder, head_configs=head_configs, pretrained=args.pretrained)
+    model = DPT_DINOv2(encoder=args.encoder, head_configs=head_configs, pretrained=args.restore_path)
 
     saved_state_dict = torch.load(args.restore_path)
     model.load_state_dict(saved_state_dict)
@@ -109,7 +117,7 @@ def main():
                             is_training=False,
                             images_file=args.images_file,
                             transforms=testing_transforms,
-                            combine_class=False if not args.combine_class and get_dataset_category(set(['OEM']))==train_dataset_type else True, 
+                            combine_class=False, 
                             )
     oemloader = data.DataLoader(oemdataset, batch_size=1, shuffle=False)
     oemloaders['OEM']=oemloader
@@ -122,18 +130,15 @@ def main():
                                 images_file=args.images_file,
                                 transforms=testing_transforms,
                                 multi_task=True if args.multi_task and base_folder_name in ss_datasetname else False,
-                                combine_class=False if not args.combine_class and get_dataset_category(set([base_folder_name]))==train_dataset_type else True, 
-                                r=args.segment_r,
-                                even_0_3=args.even_0_3,
-                                even_3_b=args.even_3_b,
+                                combine_class=True,
                                 )
         testloader = data.DataLoader(testdataset, batch_size=1, shuffle=False)
         testloaders[base_folder_name] = testloader  # Store using the base folder name as the key
         
     if args.eval_oem:
-        eval_oem(oemloaders, model, args.save_num_images, writer, logger, 0, args=args, train_dataset_type=train_dataset_type)
+        eval_oem(oemloaders, model, args.save_num_images, writer, logger, 0, args=args, train_dataset_type="OEM")
         
-    eval(testloaders, model, args.save_num_images, writer, logger, 0, args=args,train_dataset_type=train_dataset_type)
+    eval(testloaders, model, args.save_num_images, writer, logger, 0, args=args, train_dataset_type="OEM")
             
 def eval_oem(testloaders, model, num_images_to_save, writer, logger, i_iter, args=None, train_dataset_type=None):
     
