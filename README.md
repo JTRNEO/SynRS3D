@@ -10,7 +10,7 @@
 
 <sup>1</sup> The University of Tokyo, <sup>2</sup> RIKEN AIP
 
-[![Project Page](https://img.shields.io/badge/Project-Page-brightgreen)](https://jtrneo.github.io/SynRS3D/) [![arXiv paper](https://img.shields.io/badge/arXiv-paper-b31b1b.svg)](https://arxiv.org/pdf/2406.18151) [![Zenodo Datasets](https://img.shields.io/badge/Zenodo-Datasets-blue)](https://zenodo.org/records/13905264) [![Zenodo Models](https://img.shields.io/badge/Zenodo-Models-blue)](https://zenodo.org/records/13940407)
+[![Project Page](https://img.shields.io/badge/Project-Page-brightgreen)](https://jtrneo.github.io/SynRS3D/) [![arXiv paper](https://img.shields.io/badge/arXiv-paper-b31b1b.svg)](https://arxiv.org/pdf/2406.18151) [![HF Datasets](https://img.shields.io/badge/%F0%9F%A4%97-Datasets-yellow?style=flat-square)](https://huggingface.co/datasets/JTRNEO/SynRS3D) [![Zenodo Datasets](https://img.shields.io/badge/Zenodo-Datasets-blue)](https://zenodo.org/records/13905264) [![HF Models](https://img.shields.io/badge/%F0%9F%A4%97-Models-yellow?style=flat-square)](https://huggingface.co/JTRNEO/RS3DAda) [![Zenodo Models](https://img.shields.io/badge/Zenodo-Models-blue)](https://zenodo.org/records/13940407)
 
 
 
@@ -71,7 +71,7 @@ Note that the code in this repo runs under **Linux** system. We have not tested 
 
 ### Download the SynRS3D dataset:
 
-- **SynRS3D:** [![Zenodo Datasets](https://img.shields.io/badge/Zenodo-Datasets-blue)](https://zenodo.org/records/13905264)
+- **SynRS3D:** [![HF Datasets](https://img.shields.io/badge/%F0%9F%A4%97-Datasets-yellow?style=flat-square)](https://huggingface.co/datasets/JTRNEO/SynRS3D) or [![Zenodo Datasets](https://img.shields.io/badge/Zenodo-Datasets-blue)](https://zenodo.org/uploads/13905264)
 
     Place all zip files under `./SynRS3D/data` and extract them.
 
@@ -231,8 +231,8 @@ You should expect results similar to those shown above.
 You can find pretrained RS3DAda checkpoints here. At the moment we provide the following model versions:
 | Model                                                                  |   Size         |
 |--------------------------------------------------------------------------------|----------------|
-| [RS3DAda_vitl_DPT_height](https://zenodo.org/records/13940407)                 |  366.54M Params  |
-| [RS3DAda_vitl_DPT_segmentation](https://zenodo.org/records/13940407)                 |  366.54M Params  |
+| [RS3DAda_vitl_DPT_height](https://huggingface.co/JTRNEO/RS3DAda/blob/main/RS3DAda_vitl_DPT_height.pth)                 |  366.54M Params  |
+| [RS3DAda_vitl_DPT_segmentation](https://huggingface.co/JTRNEO/RS3DAda/blob/main/RS3DAda_vitl_DPT_segmentation.pth)                 |  366.54M Params  |
 
 Please download and place them in the folder `./SynRS3d/pretrain`.
 
